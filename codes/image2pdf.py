@@ -11,9 +11,10 @@ def imageToPdf(file):
       output_pdf_path = outname
 
       register_heif_opener()
+      
 
       with open(image_path, "rb") as image_file:
-            pdf_bytes = img2pdf.convert(image_file)
+            pdf_bytes = img2pdf.convert(image_file, rotation=img2pdf.Rotation.ifvalid)
 
       # Write the PDF bytes to a file (optional, if you want a separate PDF)
       if output_pdf_path:
@@ -21,3 +22,5 @@ def imageToPdf(file):
                   pdf_file.write(pdf_bytes)
 
       print("Image converted to PDF successfully! : ",output_pdf_path)
+
+
